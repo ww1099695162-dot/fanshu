@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具身智能介绍</title>
+  <style>
+    :root {
+      --bg: #f6f3ec;
+      --paper: #fffdf8;
+      --ink: #1c1b18;
+      --muted: #5c574e;
+      --line: #ddd6c8;
+      --accent: #0f6e6b;
+      --accent-soft: #e6f3f2;
+      --warm: #b45309;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at top left, #fff 0%, var(--bg) 55%);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.75;
+    }
+    header {
+      padding: 4.5rem 1.5rem 3rem;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .kicker {
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      line-height: 1.2;
+      margin: 0.6rem 0 1rem;
+      letter-spacing: -0.03em;
+    }
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      margin-top: 1.8rem;
+      font-size: 0.92rem;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    nav a:hover { border-bottom-color: var(--accent); }
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.6rem 1.7rem 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+    h2 {
+      margin: 0 0 0.8rem;
+      font-size: 1.35rem;
+    }
+    h3 {
+      margin: 1.3rem 0 0.4rem;
+      font-size: 1.05rem;
+    }
+    p { margin: 0.6rem 0; }
+    ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+    li { margin: 0.35rem 0; }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background: var(--accent-soft);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+    }
+    .card.alt { background: #f3eee4; }
+    .card h3 { margin: 0 0 0.4rem; }
+    .loop {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1.2rem 0 0.4rem;
+    }
+    .step {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.55rem 1.05rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .arrow { color: var(--accent); font-weight: 700; }
+    .note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+    .mini strong { display: block; margin-bottom: 0.25rem; color: var(--accent); }
+    footer {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    @media (max-width: 700px) {
+      .compare, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="kicker">Embodied Intelligence</div>
+    <h1>具身智能</h1>
+    <p class="lead">智能不再只活在屏幕里的文字和图像中，而是拥有身体，能在真实世界里感知、行动，并在与环境的互动中学会做事。</p>
+    <nav>
+      <a href="#what">是什么</a>
+      <a href="#diff">和生成式 AI 的差别</a>
+      <a href="#loop">感知—行动闭环</a>
+      <a href="#tech">常见技术路径</a>
+      <a href="#use">应用场景</a>
+      <a href="#now">现状与挑战</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="what">
+      <h2>一句话理解</h2>
+      <p>具身智能（Embodied Intelligence / Embodied AI）指：一个智能体通过自己的<strong>身体</strong>（传感器和执行器）与<strong>物理世界</strong>持续交互，在「看见、判断、动手、再根据结果修正」的过程中完成任务，并积累技能。</p>
+      <p>「具身」强调智能离不开身体和所处环境。同样的大脑，装在不同形态、不同传感器的身体上，能做的事和学到的经验都会不同。这和只处理文本、图片、代码的纯数字智能形成对照。</p>
+    </section>
+
+    <section id="diff">
+      <h2>和聊天机器人、大模型有什么不同</h2>
+      <div class="compare">
+        <div class="card alt">
+          <h3>离身智能</h3>
+          <p>主要在数字空间里工作：回答问题、写代码、生成图像。输入输出多是符号和像素，不必直接推动物理对象，也很少承担动作失败的后果。</p>
+        </div>
+        <div class="card">
+          <h3>具身智能</h3>
+          <p>必须面对重力、摩擦、遮挡、延迟和安全约束。一个抓取动作对了没有，要以物体有没有被稳稳拿起来为准，而不是看一段文字是否通顺。</p>
+        </div>
+      </div>
+      <p>两者并非对立。今天很多机器人方案会把大语言模型或视觉语言模型当作「大脑」，再接到感知和控制系统上，让语言能力服务于真实动作。具身智能要解决的，是把理解变成可执行、可验证的行为。</p>
+    </section>
+
+    <section id="loop">
+      <h2>核心机制：感知—决策—行动闭环</h2>
+      <div class="loop">
+        <span class="step">感知</span>
+        <span class="arrow">→</span>
+        <span class="step">理解与决策</span>
+        <span class="arrow">→</span>
+        <span class="step">控制与行动</span>
+        <span class="arrow">→</span>
+        <span class="step">环境反馈</span>
+      </div>
+      <p class="note">行动会改变环境，新的感知又进入下一轮循环。智能体是在这个闭环里学习和工作的，而不是一次性「想完再输出」。</p>
+      <div class="grid-3">
+        <div class="mini">
+          <strong>身体</strong>
+          相机、力觉、IMU、麦克风，以及关节、灵巧手、轮式或足式底盘等执行机构。
+        </div>
+        <div class="mini">
+          <strong>世界模型</strong>
+          对物体、空间、因果关系的内部估计，用来预测「我如果这样做，世界会怎样」。
+        </div>
+        <div class="mini">
+          <strong>技能</strong>
+          行走、抓取、开门、装配等可复用的动作能力，通常由数据、仿真和真机试错共同塑造。
+        </div>
+      </div>
+    </section>
+
+    <section id="tech">
+      <h2>常见技术路径</h2>
+      <ul>
+        <li><strong>模仿学习：</strong>从人类示范（遥操作、视频、动作捕捉）中学习策略，起步快，但对示范质量和覆盖范围依赖高。</li>
+        <li><strong>强化学习：</strong>在仿真或真实环境中按奖励试错，适合步态、控制这类持续决策，但真机试错成本高、安全性要求高。</li>
+        <li><strong>视觉—语言—动作模型（VLA）：</strong>用一个模型同时看图像、理解指令、输出动作，是当前通向「通用机器人大脑」的热门路线。</li>
+        <li><strong>仿真到真机（Sim-to-Real）：</strong>先在仿真里大量训练，再迁移到真机，用来降低损坏设备和采集数据的成本。</li>
+        <li><strong>分层系统：</strong>上层做任务规划，中层选技能，下层做运动控制。工程上更稳，也便于把大模型用在规划层。</li>
+      </ul>
+    </section>
+
+    <section id="use">
+      <h2>正在落地的方向</h2>
+      <ul>
+        <li><strong>工业与仓储：</strong>上下料、分拣、码垛、质检，环境相对结构化，是目前最成熟的应用。</li>
+        <li><strong>家庭与商业服务：</strong>清洁、配送、接待，环境更开放，对安全和泛化要求更高。</li>
+        <li><strong>人形机器人：</strong>希望用接近人体的形态进入为人设计的空间；整机和通用操作仍处于早期，但后市场和产线试点已经开始出现。</li>
+        <li><strong>特种作业：</strong>巡检、救援、水下或危险环境作业，强调可靠性和远程协同，而不是完全无人。</li>
+      </ul>
+    </section>
+
+    <section id="now">
+      <h2>现状与挑战</h2>
+      <p>具身智能被看作人工智能进入物理世界的关键一步，研究和产业投入都在加快。但和已经规模化的文本、图像生成相比，它仍然更难：数据昂贵、场景碎片化、硬件差异大，实验室里的成功率到了车间或客厅往往会明显下降。</p>
+      <ul>
+        <li>开放环境里的泛化仍然不足，换个物体、光线或摆放位置就可能失败。</li>
+        <li>真机数据少、采集贵，仿真和现实之间常有差距。</li>
+        <li>实时控制、力觉和安全约束，比「再生成一段答案」苛刻得多。</li>
+        <li>能耗、成本、可靠性和可维修性，会直接决定能不能规模部署。</li>
+      </ul>
+      <p>一句话判断：方向明确，短期更适合在结构清晰、容错可控的场景里落地；通用家庭机器人或全能人形助手，仍需要较长时间的工程和数据积累。</p>
+    </section>
+  </main>
+
+  <footer>
+    本页用于概念介绍，不涉及具体产品评测。具身智能仍在快速发展，细节会随研究和工程实践更新。
+  </footer>
+</body>
+</html>
